@@ -11,6 +11,6 @@ class UiConfig {
         primaryColorLight: const Color(0xff7ba37e),
         appBarTheme: const AppBarTheme(backgroundColor: Color(0xffA8CE4B)),
         scaffoldBackgroundColor: const Color(0xFF527e5b),
-        fontFamily: 'Rubik'
+        fontFamily: 'Concert One'
       );
 }

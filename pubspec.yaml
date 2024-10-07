@@ -38,6 +38,8 @@ dependencies:
   flutter_modular: ^6.3.4
   mobx: ^2.3.3+2
   flutter_mobx: ^2.2.1+1
+  flutter_screenutil: ^5.9.3
+  sleek_circular_slider: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -80,9 +82,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Rubik
+    - family: Concert One
       fonts:
-        - asset: assets/fonts/Rubik-VariableFont_wght.ttf
+        - asset: assets/fonts/ConcertOne-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
