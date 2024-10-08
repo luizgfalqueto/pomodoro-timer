@@ -1,0 +1,6 @@
+
+class Messages {
+
+  Messages._();
+
+}

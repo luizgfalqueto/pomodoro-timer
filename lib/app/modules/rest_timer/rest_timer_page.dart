@@ -2,26 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pomodoro_timer/app/core/ui/extensions/theme_extension.dart';
+import 'package:pomodoro_timer/app/core/ui/icons/pomodoro_timer_icons.dart';
 import 'package:pomodoro_timer/app/core/widgets/default_button.dart';
 import 'package:pomodoro_timer/app/core/widgets/dialogs.dart';
-import 'package:pomodoro_timer/app/modules/timer/timer_controller.dart';
+import 'package:pomodoro_timer/app/modules/rest_timer/rest_time_controller.dart';
 import 'package:pomodoro_timer/app/core/widgets/clock_timer.dart';
 
-import 'widgets/count_time_circles.dart';
-
-class TimerPage extends StatelessWidget {
-  const TimerPage({super.key});
+class RestTimerPage extends StatelessWidget {
+  const RestTimerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Modular.get<TimerController>();
+    final controller = Modular.get<RestTimeController>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(
           onPressed: () async {
             final toSkipRest = await Dialogs.showOkCancelDialog(
-                context, 'Register your focus time?');
+                context, 'Really skip rest time?');
             if (toSkipRest) {
               controller.close();
               Modular.to.pop();
@@ -29,31 +28,24 @@ class TimerPage extends StatelessWidget {
           },
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: context.primaryColor,
+            color: context.whiteColor,
             size: 32,
           ),
         ),
       ),
-      backgroundColor: context.whiteColor,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               const SizedBox(
-                height: 30,
-                child: Center(
-                  child: CountTimeCircles(),
-                ),
+                height: 32,
               ),
-              const SizedBox(
-                height: 50,
-              ),
-              ClockTimer<TimerController>(
+              ClockTimer<RestTimeController>(
                 controller: controller,
-                progressBarColor: context.primaryColor,
-                textTimerColor: const Color(0xFF5C5C5C),
-                trackColor: const Color(0xFFc5c5c5),
+                progressBarColor: context.whiteColor,
+                textTimerColor: context.whiteColor,
+                trackColor: Colors.grey.shade600,
               ),
               const SizedBox(
                 height: 30,
@@ -61,16 +53,19 @@ class TimerPage extends StatelessWidget {
               Observer(
                 builder: (context) => Text(
                   controller.modeText,
-                  style: context.normalTextStyle
-                      .copyWith(fontWeight: FontWeight.normal, fontSize: 22,),
+                  style: context.normalTextStyle.copyWith(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 22,
+                      color: context.whiteColor),
                 ),
               ),
               const SizedBox(
                 height: 30,
               ),
-              const Icon(
-                Icons.computer,
+              Icon(
+                PomodoroTimer.leaf,
                 size: 40,
+                color: context.whiteColor,
               ),
               const SizedBox(
                 height: 50,
@@ -82,11 +77,12 @@ class TimerPage extends StatelessWidget {
                         ? Icons.play_arrow_rounded
                         : Icons.pause_outlined,
                     text: controller.buttonText,
-                    textColor: context.primaryColor,
-                    backgroundColor: context.primaryColor,
+                    textColor: context.whiteColor,
+                    backgroundColor: context.whiteColor,
                     onPressed: () {
                       controller.controllTimer();
                     },
+                    iconColor: context.primaryColor,
                   );
                 },
               )

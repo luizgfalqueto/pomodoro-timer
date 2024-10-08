@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'timer_controller.dart';
+part of 'rest_time_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,31 +8,31 @@ part of 'timer_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$TimerController on TimerControllerBase, Store {
+mixin _$RestTimeController on RestTimeControllerBase, Store {
   Computed<Color>? _$backgroundColorComputed;
 
   @override
   Color get backgroundColor => (_$backgroundColorComputed ??= Computed<Color>(
           () => super.backgroundColor,
-          name: 'TimerControllerBase.backgroundColor'))
+          name: 'RestTimeControllerBase.backgroundColor'))
       .value;
   Computed<String>? _$buttonTextComputed;
 
   @override
   String get buttonText =>
       (_$buttonTextComputed ??= Computed<String>(() => super.buttonText,
-              name: 'TimerControllerBase.buttonText'))
+              name: 'RestTimeControllerBase.buttonText'))
           .value;
   Computed<String>? _$modeTextComputed;
 
   @override
   String get modeText =>
       (_$modeTextComputed ??= Computed<String>(() => super.modeText,
-              name: 'TimerControllerBase.modeText'))
+              name: 'RestTimeControllerBase.modeText'))
           .value;
 
   late final _$circlesAtom =
-      Atom(name: 'TimerControllerBase.circles', context: context);
+      Atom(name: 'RestTimeControllerBase.circles', context: context);
 
   @override
   ObservableList<dynamic> get circles {
@@ -48,7 +48,7 @@ mixin _$TimerController on TimerControllerBase, Store {
   }
 
   late final _$valueTimeAtom =
-      Atom(name: 'TimerControllerBase.valueTime', context: context);
+      Atom(name: 'RestTimeControllerBase.valueTime', context: context);
 
   @override
   double get valueTime {
@@ -64,7 +64,7 @@ mixin _$TimerController on TimerControllerBase, Store {
   }
 
   late final _$defaultValueAtom =
-      Atom(name: 'TimerControllerBase.defaultValue', context: context);
+      Atom(name: 'RestTimeControllerBase.defaultValue', context: context);
 
   @override
   double get defaultValue {
@@ -80,7 +80,7 @@ mixin _$TimerController on TimerControllerBase, Store {
   }
 
   late final _$currentValueTimeAtom =
-      Atom(name: 'TimerControllerBase.currentValueTime', context: context);
+      Atom(name: 'RestTimeControllerBase.currentValueTime', context: context);
 
   @override
   double? get currentValueTime {
@@ -96,7 +96,7 @@ mixin _$TimerController on TimerControllerBase, Store {
   }
 
   late final _$focusedMinsAtom =
-      Atom(name: 'TimerControllerBase.focusedMins', context: context);
+      Atom(name: 'RestTimeControllerBase.focusedMins', context: context);
 
   @override
   int get focusedMins {
@@ -112,7 +112,7 @@ mixin _$TimerController on TimerControllerBase, Store {
   }
 
   late final _$isStartedAtom =
-      Atom(name: 'TimerControllerBase.isStarted', context: context);
+      Atom(name: 'RestTimeControllerBase.isStarted', context: context);
 
   @override
   bool get isStarted {
@@ -128,7 +128,7 @@ mixin _$TimerController on TimerControllerBase, Store {
   }
 
   late final _$workTimeAtom =
-      Atom(name: 'TimerControllerBase.workTime', context: context);
+      Atom(name: 'RestTimeControllerBase.workTime', context: context);
 
   @override
   bool get workTime {
@@ -143,66 +143,39 @@ mixin _$TimerController on TimerControllerBase, Store {
     });
   }
 
-  late final _$completeSectionAsyncAction =
-      AsyncAction('TimerControllerBase.completeSection', context: context);
-
-  @override
-  Future<void> completeSection() {
-    return _$completeSectionAsyncAction.run(() => super.completeSection());
-  }
-
-  late final _$takeRestAsyncAction =
-      AsyncAction('TimerControllerBase.takeRest', context: context);
-
-  @override
-  Future<void> takeRest() {
-    return _$takeRestAsyncAction.run(() => super.takeRest());
-  }
-
-  late final _$TimerControllerBaseActionController =
-      ActionController(name: 'TimerControllerBase', context: context);
-
-  @override
-  void initController() {
-    final _$actionInfo = _$TimerControllerBaseActionController.startAction(
-        name: 'TimerControllerBase.initController');
-    try {
-      return super.initController();
-    } finally {
-      _$TimerControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
+  late final _$RestTimeControllerBaseActionController =
+      ActionController(name: 'RestTimeControllerBase', context: context);
 
   @override
   void controllTimer() {
-    final _$actionInfo = _$TimerControllerBaseActionController.startAction(
-        name: 'TimerControllerBase.controllTimer');
+    final _$actionInfo = _$RestTimeControllerBaseActionController.startAction(
+        name: 'RestTimeControllerBase.controllTimer');
     try {
       return super.controllTimer();
     } finally {
-      _$TimerControllerBaseActionController.endAction(_$actionInfo);
+      _$RestTimeControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void pauseTimer() {
-    final _$actionInfo = _$TimerControllerBaseActionController.startAction(
-        name: 'TimerControllerBase.pauseTimer');
+    final _$actionInfo = _$RestTimeControllerBaseActionController.startAction(
+        name: 'RestTimeControllerBase.pauseTimer');
     try {
       return super.pauseTimer();
     } finally {
-      _$TimerControllerBaseActionController.endAction(_$actionInfo);
+      _$RestTimeControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void close() {
-    final _$actionInfo = _$TimerControllerBaseActionController.startAction(
-        name: 'TimerControllerBase.close');
+    final _$actionInfo = _$RestTimeControllerBaseActionController.startAction(
+        name: 'RestTimeControllerBase.close');
     try {
       return super.close();
     } finally {
-      _$TimerControllerBaseActionController.endAction(_$actionInfo);
+      _$RestTimeControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 

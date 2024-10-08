@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Modular.setInitialRoute('/home/');
     return ScreenUtilInit(
-      designSize:  const Size(390, 844),
+      designSize: const Size(390, 844),
       builder: (_, __) {
         return MaterialApp.router(
           title: UiConfig.title,

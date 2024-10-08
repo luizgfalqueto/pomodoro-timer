@@ -7,6 +7,7 @@ class DefaultButton extends StatelessWidget {
   final Color? backgroundColor;
   final Function() onPressed;
   final Color? textColor;
+  final Color? iconColor;
 
   const DefaultButton({
     super.key,
@@ -15,6 +16,7 @@ class DefaultButton extends StatelessWidget {
     this.backgroundColor,
     required this.onPressed,
     this.textColor,
+    this.iconColor,
   });
 
   @override
@@ -30,7 +32,7 @@ class DefaultButton extends StatelessWidget {
           ),
           icon: Icon(
             icon,
-            color: Colors.white,
+            color: iconColor ?? Colors.white,
           ),
         ),
         const SizedBox(
@@ -39,7 +41,7 @@ class DefaultButton extends StatelessWidget {
         Text(
           text ?? '',
           style: context.normalTextStyle.copyWith(
-            color: context.whiteColor,
+            color: textColor,
           ),
         ),
       ],

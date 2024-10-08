@@ -40,6 +40,7 @@ dependencies:
   flutter_mobx: ^2.2.1+1
   flutter_screenutil: ^5.9.3
   sleek_circular_slider: ^2.0.1
+  fluttericon: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -85,6 +86,10 @@ flutter:
     - family: Concert One
       fonts:
         - asset: assets/fonts/ConcertOne-Regular.ttf
+
+    - family: PomodoroTimer
+      fonts:
+        - asset: assets/fonts/PomodoroTimer.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

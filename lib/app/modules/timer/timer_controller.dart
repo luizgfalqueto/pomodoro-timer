@@ -1,19 +1,23 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:pomodoro_timer/app/core/interfaces/base_timer_controller.dart';
 import 'package:pomodoro_timer/app/modules/timer/models/count_times_circle_model.dart';
 part 'timer_controller.g.dart';
 
 class TimerController = TimerControllerBase with _$TimerController;
 
-abstract class TimerControllerBase with Store {
+abstract class TimerControllerBase with Store, BaseTimerController {
   int _currentTime = 0;
 
   @observable
   ObservableList circles = ObservableList();
 
   @observable
-  double valueTime = 1500, defaultValue = 1500;
+  @override
+  double valueTime = 5, defaultValue = 5;
 
   @observable
   double? currentValueTime;
@@ -23,6 +27,12 @@ abstract class TimerControllerBase with Store {
 
   @observable
   bool isStarted = false;
+
+  @observable
+  bool workTime = true;
+
+  @computed
+  Color get backgroundColor => workTime ? const Color(0xFFF1F3F5) : const Color(0xFF527e5b);
 
   @computed
   String get buttonText => isStarted == false ? 'Play' : 'Stop';
@@ -45,18 +55,19 @@ abstract class TimerControllerBase with Store {
   }
 
   @action
+  @override
   void controllTimer() {
     if (isStarted == false) {
       isStarted = true;
       const oneSec = Duration(seconds: 1);
       timer = Timer.periodic(
         oneSec,
-        (Timer timer) {
+        (Timer timer) async {
           if (valueTime <= 1) {
-            completeSection();
             timer.cancel();
             valueTime = defaultValue;
             isStarted = false;
+            await completeSection();
           } else {
             valueTime--;
           }
@@ -68,6 +79,7 @@ abstract class TimerControllerBase with Store {
   }
 
   @action
+  @override
   void pauseTimer() {
     currentValueTime = valueTime;
     timer!.cancel();
@@ -76,6 +88,7 @@ abstract class TimerControllerBase with Store {
   }
 
   @action
+  @override
   void close() {
     if (timer != null) {
       timer!.cancel();
@@ -83,7 +96,7 @@ abstract class TimerControllerBase with Store {
   }
 
   @action
-  void completeSection() {
+  Future<void> completeSection() async {
     switch (_currentTime) {
       case 0:
         _completeCircle(0, 1);
@@ -99,6 +112,7 @@ abstract class TimerControllerBase with Store {
         break;
       default:
     }
+    await takeRest();
   }
 
   void _completeCircle(int toComplete, int toStart) {
@@ -109,4 +123,10 @@ abstract class TimerControllerBase with Store {
     final newStarted = CountTimesCircleModel(completed: false, inCurse: true);
     circles.insert(toStart, newStarted);
   }
+
+  @action
+  Future<void> takeRest() async {
+    await Modular.to.pushNamed('/timer/rest_time');
+  }
+
 }
