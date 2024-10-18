@@ -74,7 +74,7 @@ abstract class RestTimeControllerBase with Store, BaseTimerController {
   @override
   void pauseTimer() {
     currentValueTime = valueTime;
-    timer!.cancel();
+    timer.cancel();
     isStarted = false;
     currentValueTime = 0.00;
   }
@@ -82,9 +82,7 @@ abstract class RestTimeControllerBase with Store, BaseTimerController {
   @action
   @override
   void close() {
-    if (timer != null) {
-      timer!.cancel();
-    }
+    timer.cancel();
   }
 
   @action

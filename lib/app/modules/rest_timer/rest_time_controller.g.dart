@@ -180,6 +180,17 @@ mixin _$RestTimeController on RestTimeControllerBase, Store {
   }
 
   @override
+  void closePage() {
+    final _$actionInfo = _$RestTimeControllerBaseActionController.startAction(
+        name: 'RestTimeControllerBase.closePage');
+    try {
+      return super.closePage();
+    } finally {
+      _$RestTimeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 circles: ${circles},

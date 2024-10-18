@@ -20,11 +20,13 @@ class TimerPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         leading: IconButton(
           onPressed: () async {
-            final toSkipRest = await Dialogs.showOkCancelDialog(
-                context, 'Register your focus time?');
-            if (toSkipRest) {
+            final registerTime = await Dialogs.showOkCancelDialog(
+                context, 'Register your focus time?',);
+            if (!registerTime) {
               controller.close();
               Modular.to.pop();
+            } else {
+              // registrar tempo
             }
           },
           icon: Icon(
