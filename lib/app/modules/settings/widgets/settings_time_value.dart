@@ -19,21 +19,22 @@ class SettingsTimeValue extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(text, style: context.normalTextStyle),
+        Text(text, style: context.normalTextStyle.copyWith(fontSize: 22)),
         InkWell(
           onTap: action,
           child: Row(
             children: [
               Text(
                 value,
-                style: context.normalTextStyle,
+                style: context.normalTextStyle.copyWith(fontSize: 22, color: context.whiteColor),
               ),
               const SizedBox(
                 width: 5,
               ),
-              const Icon(
+              Icon(
                 Icons.edit,
-                size: 16,
+                size: 20,
+                color: context.whiteColor,
               )
             ],
           ),

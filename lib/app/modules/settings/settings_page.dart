@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pomodoro_timer/app/core/ui/extensions/theme_extension.dart';
-import 'package:pomodoro_timer/app/core/ui/icons/pomodoro_timer_icons.dart';
 import 'package:pomodoro_timer/app/modules/settings/settings_controller.dart';
 
-import 'widgets/settings_time_value.dart';
+import 'widgets/about_presentation.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Modular.get<SettingsController>();
+    final controller = Modular.get<SettingsController>()..initController();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -64,70 +64,38 @@ class SettingsPage extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              Container(
-                // height: 90,
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    color: context.primaryColorLight,
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(8)),
-                child: Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Designed and developed By',
-                          style: context.normalTextStyle.copyWith(fontSize: 18),
-                        ),
-                        Text(
-                          'Luiz Gustavo Falqueto',
-                          style: context.normalTextStyle.copyWith(
-                            fontSize: 18,
-                            color: context.whiteColor,
-                          ),
-                        )
-                      ],
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(PomodoroTimer.github),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(PomodoroTimer.linkedin),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              const AboutPresentation(),
               const SizedBox(
                 height: 32,
               ),
-              SettingsTimeValue(
-                text: 'Focus Time',
-                value: controller.textValueTime,
-                action: () {},
+              Observer(
+                builder: (context) => ListTile(
+                  title: Text(
+                    'Focus level',
+                    style: context.normalTextStyle.copyWith(
+                      fontSize: 20,
+                    ),
+                  ),
+                  subtitle: Text(
+                    controller.focusModel.toString(),
+                    style: context.normalTextStyle.copyWith(
+                      color: Colors.grey.shade300,
+                    ),
+                  ),
+                  contentPadding: const EdgeInsets.all(0),
+                  leading: const Icon(
+                    Icons.timelapse_rounded,
+                    size: 30,
+                    color: Colors.black87,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right_rounded,
+                    size: 30,
+                    color: Colors.black87,
+                  ),
+                  onTap: () => controller.showBottomSheet(context),
+                ),
               ),
-              const SizedBox(
-                 height: 16,
-              ),
-              SettingsTimeValue(
-                text: 'Rest Time',
-                value: '5m 0s',
-                action: () {},
-              )
             ],
           ),
         ),
