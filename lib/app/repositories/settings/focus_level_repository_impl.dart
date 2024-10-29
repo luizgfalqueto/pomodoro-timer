@@ -1,24 +1,24 @@
 import 'package:pomodoro_timer/app/core/constants/constants.dart';
-import 'package:pomodoro_timer/app/modules/settings/models/focus_level_model.dart';
+import 'package:pomodoro_timer/app/core/models/focus_level_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './settings_repository.dart';
+import 'focus_level_repository.dart';
 
-class SettingsRepositoryImpl extends SettingsRepository {
+class FocusLevelRepositoryImpl extends FocusLevelRepository {
   @override
-  Future<FocusLevelType> getFocusLevel() async {
+  Future<FocusLevelModel> getFocusLevel() async {
     SharedPreferences shared = await SharedPreferences.getInstance();
 
     final levelType = shared.getString(Constants.focusLevelKey) ?? 'popular';
 
     if(levelType == 'begginner') {
-      return FocusLevelType.begginner;
+      return FocusLevelModel.begginner();
     } else if (levelType == 'popular') {
-      return FocusLevelType.popular;
+      return FocusLevelModel.popular();
     } else if (levelType == 'medium') {
-      return FocusLevelType.medium;
+      return FocusLevelModel.medium();
     } else {
-      return FocusLevelType.extended;
+      return FocusLevelModel.extended();
     }
   }
 

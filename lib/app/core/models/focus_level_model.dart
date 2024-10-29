@@ -1,4 +1,4 @@
-enum FocusLevelType { begginner, popular, medium, extended }
+enum FocusLevelType { begginner, popular, medium, extended, customized }
 
 extension FocusLevelTypeDescription on FocusLevelType {
   String get description {
@@ -11,6 +11,8 @@ extension FocusLevelTypeDescription on FocusLevelType {
         return 'medium';
       case FocusLevelType.extended:
         return 'extended';
+      case FocusLevelType.customized:
+        return 'customized';
     }
   }
 }
