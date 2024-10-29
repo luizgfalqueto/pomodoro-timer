@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:pomodoro_timer/app/core/ui/extensions/theme_extension.dart';
 import 'package:pomodoro_timer/app/modules/settings/widgets/focus_level_time_select.dart';
 import 'package:pomodoro_timer/app/repositories/settings/focus_level_repository_impl.dart';
 
