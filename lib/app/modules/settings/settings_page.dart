@@ -93,7 +93,35 @@ class SettingsPage extends StatelessWidget {
                     size: 30,
                     color: Colors.black87,
                   ),
-                  onTap: () => controller.showBottomSheet(context),
+                  onTap: () => controller.showBottomSheetFocusTimeModel(context),
+                ),
+              ),
+              Observer(
+                builder: (context) => ListTile(
+                  title: Text(
+                    'Auto start',
+                    style: context.normalTextStyle.copyWith(
+                      fontSize: 20,
+                    ),
+                  ),
+                  subtitle: Text(
+                    controller.autoStartModel.toString(),
+                    style: context.normalTextStyle.copyWith(
+                      color: Colors.grey.shade300,
+                    ),
+                  ),
+                  contentPadding: const EdgeInsets.all(0),
+                  leading: const Icon(
+                    Icons.refresh,
+                    size: 30,
+                    color: Colors.black87,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right_rounded,
+                    size: 30,
+                    color: Colors.black87,
+                  ),
+                  onTap: () => controller.showBottomSheetAutoStartModel(context),
                 ),
               ),
             ],

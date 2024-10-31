@@ -25,6 +25,22 @@ mixin _$SettingsController on SettingsControllerBase, Store {
     });
   }
 
+  late final _$autoStartModelAtom =
+      Atom(name: 'SettingsControllerBase.autoStartModel', context: context);
+
+  @override
+  AutoStartModel get autoStartModel {
+    _$autoStartModelAtom.reportRead();
+    return super.autoStartModel;
+  }
+
+  @override
+  set autoStartModel(AutoStartModel value) {
+    _$autoStartModelAtom.reportWrite(value, super.autoStartModel, () {
+      super.autoStartModel = value;
+    });
+  }
+
   late final _$initControllerAsyncAction =
       AsyncAction('SettingsControllerBase.initController', context: context);
 
@@ -33,27 +49,31 @@ mixin _$SettingsController on SettingsControllerBase, Store {
     return _$initControllerAsyncAction.run(() => super.initController());
   }
 
-  late final _$loadTimesAsyncAction =
-      AsyncAction('SettingsControllerBase.loadTimes', context: context);
+  late final _$showBottomSheetFocusTimeModelAsyncAction = AsyncAction(
+      'SettingsControllerBase.showBottomSheetFocusTimeModel',
+      context: context);
 
   @override
-  Future<void> loadTimes() {
-    return _$loadTimesAsyncAction.run(() => super.loadTimes());
+  Future<dynamic> showBottomSheetFocusTimeModel(BuildContext context) {
+    return _$showBottomSheetFocusTimeModelAsyncAction
+        .run(() => super.showBottomSheetFocusTimeModel(context));
   }
 
-  late final _$showBottomSheetAsyncAction =
-      AsyncAction('SettingsControllerBase.showBottomSheet', context: context);
+  late final _$showBottomSheetAutoStartModelAsyncAction = AsyncAction(
+      'SettingsControllerBase.showBottomSheetAutoStartModel',
+      context: context);
 
   @override
-  Future<dynamic> showBottomSheet(BuildContext context) {
-    return _$showBottomSheetAsyncAction
-        .run(() => super.showBottomSheet(context));
+  Future<dynamic> showBottomSheetAutoStartModel(BuildContext context) {
+    return _$showBottomSheetAutoStartModelAsyncAction
+        .run(() => super.showBottomSheetAutoStartModel(context));
   }
 
   @override
   String toString() {
     return '''
-focusModel: ${focusModel}
+focusModel: ${focusModel},
+autoStartModel: ${autoStartModel}
     ''';
   }
 }
